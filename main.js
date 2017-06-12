@@ -7,7 +7,6 @@ var quotes = [
 ];
 var currentQuote = 0;
 
-
 var makeNewQuote = function() {
   var randomIndex = Math.floor(Math.random()*quotes.length)
   if (randomIndex == currentQuote) {
@@ -20,5 +19,16 @@ var makeNewQuote = function() {
   document.getElementById("author").innerHTML = newAuthor;
 };
 
-var tweet = function() {
-};
+var renderNewQuote = function(){
+  makeNewQuote();
+  $('#tweetContainer iframe').remove();
+  // https://dev.twitter.com/web/tweet-button/javascript-create
+  twttr.widgets.createShareButton(
+    '/',
+    document.getElementById("tweetContainer"),
+    {
+      text: document.getElementById("quote").innerHTML + ' ~ ' +
+            document.getElementById("author").innerHTML
+    }
+  );
+}

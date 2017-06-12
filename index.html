@@ -7,11 +7,23 @@
   <div id="quotebox">
     <span id="quote">Quote</span>
     <br>
-    ~ <span id="author">Author</span>
+    <span id="tilde">~ </span><span id="author">Author</span>
     <br>
-    <button id="tweetButton" onclick="tweet()">Tweet</button>
-    <button id="newQuoteButton" onclick="makeNewQuote()">New Quote</button>
+
+    <!-- https://dev.twitter.com/web/tweet-button -->
+    <div id="tweetContainer">
+    </div>
+    <button id="newQuoteButton" onclick="renderNewQuote()">New Quote</button>
   </div>
   <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $(function() {
+      renderNewQuote();
+    });
+  });
+</script>
 </body>
 </html>
