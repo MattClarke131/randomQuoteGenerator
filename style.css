@@ -7,6 +7,6 @@ body {
   margin-top: 20%;
 }
 
-#quote {
-  font-size: 200%;
+.quotebox h1 {
+  font-style: italic;
 }
