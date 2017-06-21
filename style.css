@@ -10,3 +10,7 @@ body {
 .quotebox h1 {
   font-style: italic;
 }
+
+#tweetContainer {
+  height:20px;
+}
