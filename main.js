@@ -5,24 +5,23 @@ var quotes = [
   ["Even a moron connects against a peep.","Tactics"],
   ["Don't follow proverbs blindly.","Meta proverb"],
 ];
-var currentQuote = 0;
+var currentQuoteIndex = 0;
 
 var makeNewQuote = function() {
   var randomIndex = Math.floor(Math.random()*quotes.length)
-  if (randomIndex == currentQuote) {
+  if (randomIndex == currentQuoteIndex) {
     randomIndex = (randomIndex+1)%quotes.length;
   }
-  currentQuote = randomIndex;
-  var newQuote = quotes[randomIndex][0];
-  var newAuthor = quotes[randomIndex][1];
+  currentQuoteIndex = randomIndex;
+  var newQuote = quotes[currentQuoteIndex][0];
+  var newAuthor = quotes[currentQuoteIndex][1];
   document.getElementById("quote").innerHTML = newQuote;
   document.getElementById("author").innerHTML = newAuthor;
 };
 
-var renderNewQuote = function(){
-  makeNewQuote();
+// https://dev.twitter.com/web/tweet-button/javascript-create
+var renderTweetButton = function() {
   document.getElementById("tweetContainer").innerHTML = null;
-  // https://dev.twitter.com/web/tweet-button/javascript-create
   twttr.widgets.createShareButton(
     '/',
     document.getElementById("tweetContainer"),
@@ -31,6 +30,11 @@ var renderNewQuote = function(){
             document.getElementById("author").innerHTML
     }
   );
+}
+
+var renderNewQuote = function(){
+  makeNewQuote();
+  renderTweetButton();
 }
 
 // Run on page startup
