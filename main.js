@@ -21,7 +21,7 @@ var makeNewQuote = function() {
 
 var renderNewQuote = function(){
   makeNewQuote();
-  $('#tweetContainer iframe').remove();
+  document.getElementById("tweetContainer").innerHTML = null;
   // https://dev.twitter.com/web/tweet-button/javascript-create
   twttr.widgets.createShareButton(
     '/',
@@ -32,3 +32,6 @@ var renderNewQuote = function(){
     }
   );
 }
+
+// Run on page startup
+makeNewQuote();
